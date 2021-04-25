@@ -21,7 +21,7 @@ class Admin extends React.Component {
         </div>
       </Provider>
     )
-  }
+  } 
 }
  
 export default Admin
