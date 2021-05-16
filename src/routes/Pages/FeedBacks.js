@@ -64,12 +64,12 @@ class FeedBacks extends React.Component {
           <table className="table col-md-12" id="myTable" >
             <thead className="thead-dark">
               <tr>
-                <th>ID</th>
-                <th>İsim</th>
-                <th>Mail</th>
-                <th>Mesaj</th>
-                <th>Tarih</th>
-                <th>İşlem</th>
+                <th width="11%">ID</th>
+                <th width="11%">İsim</th>
+                <th width="11%">Mail</th>
+                <th width="45%">Mesaj</th>
+                <th width="22%">Tarih</th>
+                <th width="5%">İşlem</th>
               </tr>
             </thead>
             <tbody className="table-success">

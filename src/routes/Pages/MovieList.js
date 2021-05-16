@@ -39,6 +39,29 @@ class MovieList extends React.Component {
         });
     }
 
+    onAddFavorite(userID, userFavoriteMovieList, movieID, e) {
+        debugger;
+        userFavoriteMovieList.push(movieID);
+        const Movie = {
+            userID: userID,
+            userFavoriteMovieList: userFavoriteMovieList
+        }
+        console.log(userFavoriteMovieList);
+        Http.post('Users/addFavoriteMovie', Movie).then(res => {
+            if (res.durum) {
+                window.location.reload(false);
+            }
+
+            if (!res.durum) {
+                this.setState({
+                    hasError: !res.durum,
+                    errorMessage: res.message
+                })
+            }
+
+        });
+    }
+
     render() {
         const decodedUser = localStorage.length != 0 ? jwt.verify(localStorage.getItem('userToken'), 'Empayfi',) : "";
         return (
@@ -57,7 +80,12 @@ class MovieList extends React.Component {
                                                 userID: decodedUser.userID
                                             }
                                         }}>
-                                            <div className="movie-header" style={{ backgroundImage: `url(${Movie.imageURL})`,backgroundRepeat: 'no-repeat', backgroundSize:'100% 100%' }}>
+                                            <div className="movie-header" style={{ backgroundImage: `url(${Movie.imageURL})`, backgroundRepeat: 'no-repeat', backgroundSize: '100% 100%' }}>
+                                                {decodedUser.userName == null ? 
+                                                    null 
+                                                    :
+                                                    <img src={require("../../styles/images/addFavorite.png")} onClick={this.onAddFavorite.bind(this, decodedUser.userID, decodedUser.userMovieList, Movie._id)} style={{ marginLeft: "85%", marginTop: "3%", borderRadius: "25px", border: "2px solid rgb(200 0 255 / 30%)", backgroundColor: "rgb(186 91 212 / 90%)" }} width="35px" />
+                                                }
                                                 <div className="header-icon-container">
                                                     <a href="#">
                                                         <i className="material-icons header-icon"></i>
@@ -80,7 +108,7 @@ class MovieList extends React.Component {
                                                         <span>{Movie.duration} Dakika</span>
                                                     </div>
                                                     <div className="info-section">
-                                                        <label>Eklenme Tarihi</label>
+                                                        <label>Yayın Tarihi</label>
                                                         <span>{Movie.releaseDate}</span>
                                                     </div>
                                                 </div>
@@ -94,12 +122,6 @@ class MovieList extends React.Component {
                         {this.state.MovieList == 0 ? <h2 style={{ color: "#da0605", marginLeft: "27%" }}> Aramanıza Uygun Film Bulunamadı! </h2> : null}
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
         )
     }

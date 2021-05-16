@@ -74,10 +74,10 @@ class Movies extends React.Component {
                         <thead className="thead-dark">
                             <tr>
                                 <th width="11%">ID</th>
-                                <th width="20%">Film Adı</th>
-                                <th width="5%">Film Kategorisi</th>
-                                <th width="5%">Film Süresi</th>
-                                <th width="15%">Oluşturma tarihi</th>
+                                <th width="15%">Film Adı</th>
+                                <th width="8%">Film Kategorisi</th>
+                                <th width="10%">Film Süresi</th>
+                                <th width="12%">Oluşturma tarihi</th>
                                 <th width="5%">İşlem</th>
                             </tr>
                         </thead>
@@ -89,7 +89,7 @@ class Movies extends React.Component {
                                         <td>{movies._id}</td>
                                         <td>{movies.movieName}</td>
                                         <td>{movies.category}</td>
-                                        <td>{movies.duration}</td>
+                                        <td>{movies.duration} Dakika</td>
                                         <td>{movies.dateCreated.substr(0, 10)}</td>
                                         <td><img src={require("../../styles/images/delete.png")} width="30px" onClick={this.onDeleteMovieClick.bind(this, movies._id, movies.movieName)} /> </td>
                                     </tr>

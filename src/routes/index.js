@@ -12,6 +12,7 @@ import AddMovie from './Pages/AddMovie';
 import MovieList from './Pages/MovieList';
 import MovieDetail from './Pages/MovieDetail';
 import FeedBacks from './Pages/FeedBacks';
+import FavoriteMovies from './Pages/FavoriteMovies';
 
 export const createRoutes = (store) => ({
   component   : CoreLayout,
@@ -36,6 +37,10 @@ export const createRoutes = (store) => ({
         {
           path : "/FilmDetayi",
           component : MovieDetail
+        },
+        {
+          path : "/Favoriler",
+          component : FavoriteMovies
         }
       ]
     },

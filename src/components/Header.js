@@ -59,7 +59,7 @@ class Header extends React.Component {
                             </li>
                             {decodedUser != null ?
                                 <li className="nav-item">
-                                    <Link className="nav-link" activeClassName="active" to="/FavoriteMovies"> Favoriler </Link>
+                                    <Link className="nav-link" activeClassName="active" to="/Favoriler"> Favoriler </Link>
                                 </li>
                                 : null
                             }

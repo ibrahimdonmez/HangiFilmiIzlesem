@@ -35,9 +35,9 @@ class MovieDetail extends React.Component {
       })
       return;
     }
-
+    debugger;
     const Comment = {
-      movieid: this.state.MovieDetailList._id,
+      movieid: this.state.MovieHeader._id,
       user: userName,
       comment: this.state.comment
     }
@@ -87,14 +87,12 @@ class MovieDetail extends React.Component {
 
   componentDidMount() {
     // HTTP Call
-    debugger;
     const movie = {
       movieName: this.props.location.state.movieName,
       _id: this.props.location.state.movieID
     }
     Http.post('MovieDetail/getMovieDetail', movie).then(res => {
       if (res.durum) {
-        debugger;
         this.setState({
           MovieDetail: res.data
         })
@@ -110,12 +108,10 @@ class MovieDetail extends React.Component {
     });
 
     Http.post('Movies/getMovieDetail', movie).then(res => {
-      debugger;
       if (res.durum) {
         this.setState({
           MovieHeader: res.data
         })
-        
       }
 
       if (!res.durum) {
@@ -152,7 +148,7 @@ class MovieDetail extends React.Component {
             <div className="card-img-container">
               <img src={this.state.MovieDetail.imageURL} className="rounded mx-auto d-block" width="100%" alt="..."></img>
               <div className="card-img-overlay">
-                <p className="card-text">{this.state.MovieHeader.movieName}</p>
+                <p className="card-title">{this.state.MovieHeader.movieName}</p>
               </div>
             </div>
             <div className="row">
